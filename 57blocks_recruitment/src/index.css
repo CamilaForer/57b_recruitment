@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family:"Butler";
+  src: url(./Fonts/Butler_Bold.ttf);
+  font-family: "Proxima-nova";
+  src: url(./Fonts/Proxima-Nova-Font.ttf);
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --h1-font:Butler;
+  --h2-font:Butler;
+  --h3-font:Proxima Nova;
+  --h4-font:Proxima Nova;
+  --h5-font:Proxima Nova;
+  --h6-font:Proxima Nova;
+  --mtu-color-black: #000000;
+  --mtu-color-gray: #666666;
+  --mtu-color-lightGray: #a3a3a3;
+  --mtu-color-white: #ffffff;
+  --mtu-color-darkBlue: #27d0e7;
+  --mtu-color-darkGreen: #36daa1;
+  --mtu-color-blue-3: #2b7bf4;
+  --mtu-color-blue-2: #27b1ff;
+  --mtu-color-blue-1: #3cdff5;
+  --mtu-color-green: #42e9af;
+  --mtu-color-purple: #7a65fd;
+  --mtu-color-yellow: #ffca41;
+  --mtu-color-red: #ff4444;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin: 9.5rem;
+  height: 80vh;
+  justify-content: center;
+}
+.candidateForm{
+  background-color: var(--mtu-color-blue-1);
+}
+.MuiInputBase-input{
+  color: var(--mtu-color-black);
 }
