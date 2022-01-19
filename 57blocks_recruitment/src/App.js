@@ -1,9 +1,10 @@
-import ValidationApplyForm from './components/applicationView/ValidationApplycationForm.js';
+
+import ReferForm from './components/referForm/referForm.js';
 
 function App() {
   return (
     <>
-    <ValidationApplyForm/>,
+    <ReferForm/>
     </>
   );
 }

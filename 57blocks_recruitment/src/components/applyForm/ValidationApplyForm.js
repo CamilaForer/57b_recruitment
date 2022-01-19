@@ -2,9 +2,9 @@ import { useFormik } from "formik";
 import { TextField } from "@material-ui/core";
 import * as Yup from "yup";
 import React from "react";
-import { Button } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
 import level from "./englishLevel.js";
+import CustomButton from "../CustomButtons.js";
 // const phoneRegExp =
 //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 // const urlRegExp =
@@ -102,17 +102,9 @@ const ValidationApplyForm = () => {
             </MenuItem>
           ))}
         </TextField>
-
-        <Button
-          type="submit"
-          variant="outlined"
-          color="palette.primary.dark"
-          size="large"
-        >
-          Submit
-        </Button>
+        <CustomButton type="submit" text="Submit"/>
       </form>
-
+      
     </div>
   );
 };
