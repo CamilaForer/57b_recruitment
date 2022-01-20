@@ -26,7 +26,6 @@ const ApplyForm = () => {
             startIcon={<ArrowBackIcon fontSize="24px" />}>
             
               Apply
-            
           </Button>
         </Toolbar>
       </AppBar>

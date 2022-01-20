@@ -1,6 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import axios from "axios";
 import CustomButton from "../CustomButtons.js";
 import { Box, TextField } from "@material-ui/core";
 
@@ -32,6 +33,23 @@ const ReferFormValidation = () => {
     },
     onSubmit: (values) => {
       console.log(JSON.stringify(values));
+      axios.post("https://stormy-river-28303.herokuapp.com/api/v1/referrals",
+      {
+        code: "ABC123",
+        candidateName: values.yourName,
+        candidateEmail: values.yourEmail,
+        referrerName: values.candidateName,
+        referrerEmail: values.candidateEmail,
+        referralStatusId:3
+      })
+      .then(
+        (result) => {
+          console.log('data', result.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
     },
     validationSchema: validateForm,
   });

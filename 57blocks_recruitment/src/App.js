@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ApplyForm from './components/applyForm/ApplyForm.js';
-import ReferForm from './components/referForm/referForm.js';
+import ApplyForm from './components/applyForm/ApplyFormView.js';
+import ReferForm from './components/referForm/referFormView.js';
 
 function App() {
   return (
-    <ApplyForm></ApplyForm>
+    <ReferForm/>
     // <BrowserRouter>
     //   <Routes>
     //     <Route path="/" element={<JobOpportunities />} />
