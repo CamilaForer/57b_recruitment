@@ -1,8 +1,10 @@
-import { useFormik } from "formik";
-import { TextField } from "@material-ui/core";
-import * as Yup from "yup";
 import React from "react";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import CustomButton from "../CustomButtons.js";
+import { Box, TextField } from "@material-ui/core";
+
+
 
 const validateForm = Yup.object().shape({
   yourName: Yup.string()
@@ -34,9 +36,21 @@ const ReferFormValidation = () => {
     validationSchema: validateForm,
   });
   return (
-    <div className="candidateForm">
-      <form onSubmit={formik.handleSubmit}>
+    <Box
+      sx={{
+        display: "flex",
+        marginLeft: "9.5rem",
+        flexDirection: "column",
+        width: "50%",
+        m: "2",
+        p: "2",
+        paddingLeft: "5%",
+
+      }}
+    >
+      <form style={{ marginTop: "5rem" }} onSubmit={formik.handleSubmit}>
         <TextField
+          style={{ width: "70%", fontSize: 24 }}
           id="yourName"
           type="text"
           name="yourName"
@@ -49,6 +63,7 @@ const ReferFormValidation = () => {
           helperText={formik.touched.yourName && formik.errors.yourName}
         />
         <TextField
+          style={{ width: "70%" }}
           id="yourEmail"
           type="text"
           name="yourEmail"
@@ -61,6 +76,7 @@ const ReferFormValidation = () => {
           helperText={formik.touched.yourEmail && formik.errors.yourEmail}
         />
         <TextField
+          style={{ width: "70%" }}
           id="candidateName"
           type="text"
           name="candidateName"
@@ -74,6 +90,7 @@ const ReferFormValidation = () => {
         />
 
         <TextField
+          style={{ width: "70%" }}
           id="candidateEmail"
           type="email"
           name="candidateEmail"
@@ -85,10 +102,12 @@ const ReferFormValidation = () => {
           error={formik.touched.candidateEmail && Boolean(formik.errors.candidateEmail)}
           helperText={formik.touched.candidateEmail && formik.errors.candidateEmail}
         />
+        <div style={{ width: "70%" }}>
+          {"If the candidate you referred ends successfully in the application process, you will have a bonus of $100.000 COP"}
+          </div>
         <CustomButton type="submit" text="Submit Referral" />
       </form>
-
-    </div>
+    </Box>
   )
 };
 export default ReferFormValidation

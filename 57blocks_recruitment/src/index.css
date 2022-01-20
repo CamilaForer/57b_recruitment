@@ -25,17 +25,12 @@
   --mtu-color-yellow: #ffca41;
   --mtu-color-red: #ff4444;
 }
-form{
+/* form{
   display: flex;
   flex-direction: column;
   width: 20rem;
   margin: 9.5rem;
   height: 80vh;
   justify-content: center;
-}
-.candidateForm{
-  background-color: var(--mtu-color-blue-1);
-}
-.MuiInputBase-input{
-  color: var(--mtu-color-black);
-}
+} */
+
