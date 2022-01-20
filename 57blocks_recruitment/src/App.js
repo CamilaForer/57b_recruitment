@@ -5,7 +5,7 @@ import ReferForm from './components/referForm/referFormView.js';
 
 function App() {
   return (
-    <ReferForm/>
+    <ApplyForm/>
     // <BrowserRouter>
     //   <Routes>
     //     <Route path="/" element={<JobOpportunities />} />

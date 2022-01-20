@@ -6,6 +6,9 @@ import { Box, Button, Container, IconButton } from "@material-ui/core";
 import { AppBar, Toolbar } from "@mui/material";
 
 
+
+
+
 const ApplyForm = () => {
   return (
     <>
@@ -32,20 +35,15 @@ const ApplyForm = () => {
       <Container
         style={{
           width: "100vw",
-          display: "flex",
           height: "100vh",
-          paddingLeft: "0",
-          paddingRight: "0",
-          marginLeft: "0",
-          marginRight: "0",
-          flexDirection: "column",
+          display: "flex",
+          flexDirection: "columns",
+          alignItems:'center'
         }}
       >
-        <Box sx={{ display: "flex", bgcolor: "#3CDFF5" }}>
+        <Box sx={{ display: "flex",flexDirection: "columns", bgcolor: "#3CDFF5" }}>
           <ValidationApplyForm />
-
-
-
+         
         </Box>
       </Container>
     </>

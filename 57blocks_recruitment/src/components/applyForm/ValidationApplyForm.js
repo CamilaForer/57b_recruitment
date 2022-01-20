@@ -7,6 +7,7 @@ import level from "./englishLevel.js";
 import CustomButton from "../CustomButtons.js";
 import { Box, TextField } from "@material-ui/core";
 import { MenuItem } from "@material-ui/core";
+import DragAndDrop from "./DragAndDrop.js";
 
 const validateForm = Yup.object().shape({
   candidateName: Yup.string()
@@ -18,7 +19,9 @@ const validateForm = Yup.object().shape({
     .email("Invalid email"),
   candidatePhone: Yup.string().required("Phone number is not valid"),
   candidateLinkedIn: Yup.string().required("Enter a valid url"),
-  englishLevel: Yup.string().required("Select an option"),
+  englishLevel: Yup.number().required("Select an option"),
+  pdfFile:Yup.string()
+
 });
 const ValidationApplyForm = () => {
   const formik = useFormik({
@@ -27,11 +30,13 @@ const ValidationApplyForm = () => {
       candidateEmail: "",
       candidatePhone: "",
       candidateLinkedIn: "",
-      englishLevel: "",
+      englishLevel: 0,
+      pdfFile:""
+      
     },
     validationSchema: validateForm,
     onSubmit: (values) => {
-      
+
       console.log(JSON.stringify(values));
       axios.post("https://stormy-river-28303.herokuapp.com/api/v1/candidates",
       {
@@ -50,12 +55,23 @@ const ValidationApplyForm = () => {
         (error) => {
           console.log(error);
         }
-      )
+      ) 
+      console.log(values.pdfFile)
+      axios.post("https://stormy-river-28303.herokuapp.com/api/v1/candidates/upload-resume/1",
+      {
+        file: values.pdfFile,
+      })
+      .then(
+        (result) => {
+          console.log('data', result.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      ) 
     },
   });
-  const onSave = () => {
-    
-  }
+  
   return (
     <Box
       sx={{
@@ -69,7 +85,7 @@ const ValidationApplyForm = () => {
 
       }}
     >
-      <form style={{ marginTop: "5rem" }} onSubmit={formik.handleSubmit}>
+      <form style={{ marginTop: "5rem" }} onSubmit={formik.handleSubmit} >
         <TextField
           style={{ width: "80%", fontSize: 24 }}
           id="candidateName"
@@ -94,7 +110,7 @@ const ValidationApplyForm = () => {
           name="candidateEmail"
           label="Email"
           margin="normal"
-          color="dark"
+          color="primary"
           value={formik.values.candidateEmail}
           onChange={formik.handleChange}
           error={
@@ -112,7 +128,7 @@ const ValidationApplyForm = () => {
           name="candidatePhone"
           label="Phone"
           margin="normal"
-          color="dark"
+          color="primary"
           value={formik.values.candidatePhone}
           onChange={formik.handleChange}
           error={
@@ -130,7 +146,7 @@ const ValidationApplyForm = () => {
           name="candidateLinkedIn"
           label="LinkedIn"
           margin="normal"
-          color="dark"
+          color="primary"
           value={formik.values.candidateLinkedIn}
           onChange={formik.handleChange}
           error={
@@ -145,7 +161,8 @@ const ValidationApplyForm = () => {
           style={{ marginTop: "7%", width: "80%" }}
           id="englishLevel"
           select
-          type="text"
+          type="number"
+          value={formik.values.englishLevel}
           name="englishLevel"
           label="English Level"
           onChange={formik.handleChange}
@@ -160,10 +177,13 @@ const ValidationApplyForm = () => {
             </MenuItem>
           ))}
         </TextField>
-        <CustomButton type="submit" text="Submit Application" func={onSave}>
+        <DragAndDrop pdfFile={formik.values.pdfFile} />
+        <CustomButton type="submnit" text="Submit Application"  >
             {/* <Link to="/"></Link> */}
         </CustomButton>
+        
       </form>
+      
     </Box>
   );
 };
