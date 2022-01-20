@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios"
 import level from "./englishLevel.js";
 import CustomButton from "../CustomButtons.js";
 import { Box, TextField } from "@material-ui/core";
@@ -27,12 +29,33 @@ const ValidationApplyForm = () => {
       candidateLinkedIn: "",
       englishLevel: "",
     },
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values));
-    },
     validationSchema: validateForm,
+    onSubmit: (values) => {
+      
+      console.log(JSON.stringify(values));
+      axios.post("https://stormy-river-28303.herokuapp.com/api/v1/candidates",
+      {
+        jobId: 1,
+        name: values.candidateName,
+        email: values.candidateEmail,
+        phone: values.candidatePhone,
+        linkedIn: values.candidateLinkedIn,
+        englishLevelId: values.englishLevel,
+        candidateStatusId:1
+      })
+      .then(
+        (result) => {
+          console.log('data', result.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+    },
   });
-
+  const onSave = () => {
+    
+  }
   return (
     <Box
       sx={{
@@ -43,12 +66,12 @@ const ValidationApplyForm = () => {
         m: "2",
         p: "2",
         paddingLeft: "5%",
-        
+
       }}
     >
       <form style={{ marginTop: "5rem" }} onSubmit={formik.handleSubmit}>
         <TextField
-          style={{ width: "80%",fontSize:24}}
+          style={{ width: "80%", fontSize: 24 }}
           id="candidateName"
           type="text"
           name="candidateName"
@@ -131,15 +154,17 @@ const ValidationApplyForm = () => {
           }
           helperText={formik.touched.englishLevel && formik.errors.englishLevel}
         >
-          {level.map((option) => (
+          {level.map((option) =>(
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
         </TextField>
-        <CustomButton type="submit" text="Submit Application" />
+        <CustomButton type="submit" text="Submit Application" func={onSave}>
+            {/* <Link to="/"></Link> */}
+        </CustomButton>
       </form>
     </Box>
   );
 };
-export default ValidationApplyForm;
+export default ValidationApplyForm

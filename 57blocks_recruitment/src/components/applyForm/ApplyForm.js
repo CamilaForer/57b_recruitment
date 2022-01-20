@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import ValidationApplyForm from "./ValidationApplyForm.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Button, Container, IconButton } from "@material-ui/core";
 import { AppBar, Toolbar } from "@mui/material";
+
 
 const ApplyForm = () => {
   return (
@@ -16,13 +18,15 @@ const ApplyForm = () => {
             paddingLeft: "0",
           }}
         >
-          <IconButton size="large" edge="start" aria-label="apply"></IconButton>
+          <IconButton size="medium" edge="start" aria-label="apply"></IconButton>
           <Button style={{
             fontSize: 24,
             textTransform: 'capitalize',
           }}
-            startIcon={<ArrowBackIcon fontSize="24px"  />}>
-            Apply
+            startIcon={<ArrowBackIcon fontSize="24px" />}>
+            
+              Apply
+            
           </Button>
         </Toolbar>
       </AppBar>
@@ -40,6 +44,9 @@ const ApplyForm = () => {
       >
         <Box sx={{ display: "flex", bgcolor: "#3CDFF5" }}>
           <ValidationApplyForm />
+
+
+
         </Box>
       </Container>
     </>

@@ -6,19 +6,19 @@ const level=[
     label: "Select",
   },
   {
-    value:"Basic",
+    value:1,
     label: "Basic",
   },
   {
-    value:"Intermediate",
+    value:2,
     label: "Intermediate",
   },
   {
-    value:"Advanced",
+    value:3,
     label: "Advanced",
   },
   {
-    value:"Fluent",
+    value:4,
     label: "Fluent",
   }
 ]
